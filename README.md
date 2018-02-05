@@ -15,8 +15,12 @@
 - After installing program , run it then click "Veri Al " button to read data from txt file </br>
 - Then click "script olustur" button to create script for url list in order to import Fortigate device. then click "adress group " button to create adress group for url list 
 
+# Authors 
 
+<a href="https://github.com/farcompen"> Faruk GÜNGÖR </a>
 
+# License
+This project is licensed under the MIT License - see the <a href="https://github.com/farcompen/Fortimporter/blob/master/LICENSE">LICENSE file </a> for details
 
 
 
