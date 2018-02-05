@@ -2,8 +2,8 @@
 <img src="https://portforward.com/help/firewall-to-internet.jpg">
 
 # Getting Started 
--Fortigate Firewall Multi-Url importer is a URL list importing tool for fortigate firewall devices  </br>
--Tested on <b>Fortigate 600D , firmware 5.2 </b>and works fine ! </br>
+- Fortigate Firewall Multi-Url importer is a URL list importing tool for fortigate firewall devices  </br>
+- Tested on <b>Fortigate 600D , firmware 5.2 </b>and works fine ! </br>
 
 # Prerequisites
 
