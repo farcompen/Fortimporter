@@ -10,10 +10,11 @@
 - You need to install at least .Net Framework 4. 0 
 
 # Installing 
-- Download FortiSetup folder   
+- Download FortiSetup folder then start installing by clicking setup.exe  
 
 - After installing program , run it then click "Veri Al " button to read data from txt file </br>
 - Then click "script olustur" button to create script for url list in order to import Fortigate device. then click "adress group " button to create adress group for url list 
+- Need to add first url list script to device then add address group script
 
 # Authors 
 
