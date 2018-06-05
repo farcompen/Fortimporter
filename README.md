@@ -17,7 +17,7 @@
 - Then click "URL Script" button or "Subnet Script" button  to create script for url/subnet list in order to import Fortigate device. then click "adress group " button to create adress group script for url/subnet list. 
 - Then select scprit output or address group output then click "script kaydet" button to save your script as txt file .
 - You must import your script output to fortigate as first. Then import address group script to fortigate. </br>
- *-* Türkçe *-*  </br>
+ *-* <b>Türkçe </b>*-*  </br>
  - Programı kurduktan sonra, nesne  türümüzü seçiyoruz. Url listesi için FQDN , ip listesi için subnet , sonra "Veri AL" butonuna basarak , ip/url listesinin olduğu txt dosyasını seçiyoruz </br> 
  - Subnet script oluşturmak için Subnet Script, url sicript oluşturma için Url Script butonuna basıyuroz. </br>
  - Program otomatik olarak ip/url sağındaki ve solundaki boşlukıarı siler. </br>
