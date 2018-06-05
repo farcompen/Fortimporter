@@ -12,10 +12,17 @@
 # Installing 
 - Download FortiSetup folder then start installing by clicking setup.exe  
 
-- After installing program , run it then click "Veri Al " button to read data from txt file </br>
-- Then click "script olustur" button to create script for url list in order to import Fortigate device. then click "adress group " button to create adress group for url list 
-- Need to add first url list script to device then add address group script
-
+# How to Use 
+ - After installing program , run it and select your object option as FQND or Subnet. click "Veri Al "  button to read data from txt file </br>
+- Then click "URL Script" button or "Subnet Script" button  to create script for url/subnet list in order to import Fortigate device. then click "adress group " button to create adress group script for url/subnet list. 
+- Then select scprit output or address group output then click "script kaydet" button to save your script as txt file .
+- You must import your script output to fortigate as first. Then import address group script to fortigate.
+ *-* Türkçe *-* 
+ - Programı kurduktan sonra, nesne  türümüzü seçiyoruz. Url listesi için FQDN , ip listesi için subnet , sonra "Veri AL" butonuna basarak , ip/url listesinin olduğu txt dosyasını seçiyoruz </br> 
+ - Subnet script oluşturmak için Subnet Script, url sicript oluşturma için Url Script butonuna basıyuroz. </br>
+ - Program otomatik olarak ip/url sağındaki ve solundaki boşlukıarı siler. </br>
+ - <b>"Script kaydet"</b> butonu ile url/subnet scriptini ve addres Grup script çıktılarını txt olarak kaydediyoruz </br>
+ - Artık scriptlerimiz fortigate cihazımıza import için hazır. İlk önce url/subnet script çıktısını, ardından ilgili adres grup çıktısını import etmeyi unutmayınız 
 # Authors 
 
 <a href="https://github.com/farcompen"> Faruk GÜNGÖR </a>
