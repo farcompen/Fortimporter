@@ -22,11 +22,27 @@ namespace FortigateUrlImporter
         public   string dosyaYolu { get; set; }
         public   string dosyaAdi { get; set; } 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnVeriAL_Click(object sender, EventArgs e)
         {
-            DosyaSec();
-            txt_dosya_getir();
-            button2.Visible = true;
+            if (radioButton3.Checked == true || radioButton4.Checked == true)
+            {
+                DosyaSec();
+                txt_dosya_getir();
+                if (radioButton3.Checked == true)
+                {
+                    btnUrlScript.Visible = true;
+                    btnSubnet.Visible = false;
+                }
+                else if (radioButton4.Checked == true)
+                {
+                    btnSubnet.Visible = true;
+                    btnUrlScript.Visible = false;
+                }
+
+            }
+            else
+                MessageBox.Show("Lütfen nesne türü seçiniz");    
+           
         }
      
         
@@ -38,11 +54,18 @@ namespace FortigateUrlImporter
             {
                 richTextBox2.Text = " config firewall address \n               edit ";
                 StreamReader SR = new StreamReader(dosyaYolu);
-                string yazi = SR.ReadLine();
-                while (yazi != null)
+                string okunan= SR.ReadLine();
+                string yazi = okunan.Trim();
+                while (yazi.Length != 0)
                 {
                     richTextBox2.Text = richTextBox2.Text + '"' + yazi + '"' + "\n    " + "                          set type fqdn   \n                              set fqdn " + '"' + yazi + '"' + " \n               next      \n               edit ";
-                    yazi = SR.ReadLine();
+                    okunan = SR.ReadLine();
+                    if (okunan == null)
+                    {
+                        break;
+                    }
+                        yazi = okunan.Trim();
+
                 }
 
                 SR.Close();
@@ -50,7 +73,7 @@ namespace FortigateUrlImporter
             }
             catch (Exception eror)
             {
-                throw eror;
+                MessageBox.Show("hata oluştu");
             }
 
         }
@@ -63,9 +86,16 @@ namespace FortigateUrlImporter
                 richTextBox1.Text = " ";
                 StreamReader SR = new StreamReader(dosyaYolu);
                 string yazi = SR.ReadLine();
-                while (yazi != null)
+                if (yazi.Length == 0)
                 {
-                    richTextBox1.Text = richTextBox1.Text + yazi + "\n";
+                    MessageBox.Show("Dosyada veri yok. Lütfen yeni dosya seçiniz ");
+
+                }
+
+                while (yazi.Length != 0)
+                {
+                    richTextBox1.Text = richTextBox1.Text + yazi+ "\n";
+                   
                     yazi = SR.ReadLine();
                 }
 
@@ -73,7 +103,7 @@ namespace FortigateUrlImporter
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
+                MessageBox.Show("hata oluştu");
             }
 
         }
@@ -109,11 +139,18 @@ namespace FortigateUrlImporter
                 richTextBox3.Text = " config firewall addrgrp \n      edit " + '"' + groupName + '"' + "\n          set member ";
                 FileStream fs = new FileStream(dosyaYolu, FileMode.Open, FileAccess.Read);
                 StreamReader SR = new StreamReader(fs);
-                string yazi = SR.ReadLine();
-                while (yazi != null)
+                string okunan = SR.ReadLine();
+                string yazi = okunan.Trim();
+                while (yazi.Length !=0)
                 {
                     richTextBox3.Text = richTextBox3.Text + " " + '"' + yazi + '"' + " ";
-                    yazi = SR.ReadLine();
+
+                    okunan = SR.ReadLine();
+                    if (okunan == null)
+                    {
+                        break;
+                    }
+                    yazi = okunan.Trim();
                 }
                 fs.Close();
                 SR.Close();
@@ -121,7 +158,7 @@ namespace FortigateUrlImporter
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
+                MessageBox.Show("hata oluştu");
             }
 
         }
@@ -129,30 +166,77 @@ namespace FortigateUrlImporter
         //choose url list file (txt) 
         public void DosyaSec()
         {
-            OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "Metin Dosyası |*.txt";
-            file.RestoreDirectory = true;
-            file.Title = "dosya seçiniz";
-
-            if (file.ShowDialog() == DialogResult.OK)
+            try
             {
-                dosyaAdi = file.SafeFileName;
-                dosyaYolu = file.FileName;
+                OpenFileDialog file = new OpenFileDialog();
+                file.Filter = "Metin Dosyası |*.txt";
+                file.RestoreDirectory = true;
+                file.Title = "dosya seçiniz";
 
+                if (file.ShowDialog() == DialogResult.OK)
+                {
+                    dosyaAdi = file.SafeFileName;
+                    dosyaYolu = file.FileName;
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        
+          
+      //  Creating Subnet Script  
+        
+        public void  IPNetmaskOlustur()
+        {
+
+            var subnet = "/32";
+                try
+                {
+                    richTextBox2.Text = " config firewall address \n               edit ";
+                    StreamReader SR = new StreamReader(dosyaYolu);
+                    string okunan = SR.ReadLine();
+                    string yazi = okunan.Trim();
+                    while (yazi.Length != 0)
+                    {
+                        richTextBox2.Text = richTextBox2.Text + '"' + yazi + '"' + "\n    " + "                             set subnet "+'"'+yazi+subnet+'"'+ "   \n               next      \n               edit ";
+                        okunan = SR.ReadLine();
+                        if (okunan == null)
+                        {
+                            break;
+                        }
+                        yazi = okunan.Trim();
+
+
+                    }
+
+                    SR.Close();
+                    richTextBox2.Text = richTextBox2.Text + "\n               end \n                 \n ";
+                }
+                catch (Exception eror)
+                {
+                MessageBox.Show("hata oluştu");
+                }
+
+            
+
+        }
+
+        private void btnUrlScript_Click(object sender, EventArgs e)
         {
             script_olustur();
-            button2.Visible = false;
-            button3.Visible = true;
+            btnUrlScript.Visible = false;
+            btnAddGrp.Visible = true;
             radioButton1.Visible = true;
             radioButton2.Visible = true;
             button4.Visible = true;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnAddGrp_Click(object sender, EventArgs e)
         {
             AdresGroupCreate();
             radioButton1.Visible = true;
@@ -164,6 +248,32 @@ namespace FortigateUrlImporter
         private void button4_Click(object sender, EventArgs e)
         {
             kaydet();
+        }
+
+        private void btnSubnet_Click(object sender, EventArgs e)
+        {
+            richTextBox2.Clear();
+            IPNetmaskOlustur();
+            btnUrlScript.Visible = false;
+            btnAddGrp.Visible = true;
+            radioButton1.Visible = true;
+            radioButton2.Visible = true;
+            button4.Visible = true;
+        }
+
+      
+      
+
+        private void toolStripLabel1_Click_1(object sender, EventArgs e)
+        {
+            Yardim yrd = new Yardim();
+            yrd.Show();
+        }
+
+        private void toolStripLabel2_Click(object sender, EventArgs e)
+        {
+            Hakkinda hk = new Hakkinda();
+            hk.Show();
         }
     }
 }

@@ -6,4 +6,6 @@ c:\users\khb\documents\visual studio 2015\Projects\FortigateUrlImporter\Fortigat
 c:\users\khb\documents\visual studio 2015\Projects\FortigateUrlImporter\FortigateUrlImporter\obj\Debug\FortigateUrlImporter.csproj.GenerateResource.Cache
 c:\users\khb\documents\visual studio 2015\Projects\FortigateUrlImporter\FortigateUrlImporter\obj\Debug\FortigateUrlImporter.exe
 c:\users\khb\documents\visual studio 2015\Projects\FortigateUrlImporter\FortigateUrlImporter\obj\Debug\FortigateUrlImporter.pdb
+C:\Users\KHB\Documents\Visual Studio 2015\Projects\FortigateUrlImporter\FortigateUrlImporter\obj\Debug\FortigateUrlImporter.Yardim.resources
+C:\Users\KHB\Documents\Visual Studio 2015\Projects\FortigateUrlImporter\FortigateUrlImporter\obj\Debug\FortigateUrlImporter.Hakkinda.resources
 C:\Users\KHB\Documents\Visual Studio 2015\Projects\FortigateUrlImporter\FortigateUrlImporter\obj\Debug\FortigateUrlImporter.csprojResolveAssemblyReference.cache
